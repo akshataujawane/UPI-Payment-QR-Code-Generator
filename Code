@@ -1,0 +1,32 @@
+import qrcode
+
+#Taking UPI ID as a input
+UPI_id = input("Enter your UPI ID : " )
+
+#upi://pay?pa=UPI_ID&pn=NAME&am=Amount&cu=CURRENCY&tn=MESSAGE
+
+#Defing the Payment URL based  on the UPI ID and the Payment app 
+#You can modify this user based on the payment app you want to support 
+
+Phonepay_url = f'upi://pay?pa={UPI_id}&pn=Recipient%20Name&mc=1234'
+patym_url = f'upi://pay?pa={UPI_id}&pn=Recipient%20Name&mc=1234'
+google_pay_url = f'upi://pay?pa={UPI_id}&pn=Recipient%20Name&mc=1234'
+
+
+#Creat QR  code to each payment app
+Phonepay_qr = qrcode.make(Phonepay_url)
+patym_qr = qrcode.make(patym_url)
+google_pay_qr = qrcode.make(google_pay_url)
+
+#Save the QR code to image file (optional)
+Phonepay_qr.save("phonepay_qr.png")
+patym_qr.save("patym_qr.png")
+google_pay_qr.save("google_pay_qr.png")
+
+
+#(pil = libary to procrassing to image )
+#Dispaly to qr code show 
+
+Phonepay_qr.show()
+patym_qr.show()
+google_pay_qr.show()
